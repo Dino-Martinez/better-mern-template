@@ -3,13 +3,12 @@ const router = express.Router()
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 
-router.get('/user/', async (req, res) => {
+router.get('/', (req, res) => {
   const { user } = req
-  const message = user !== null ? 'Logged in' : 'Not logged in'
-  return res.json({ message })
+  return res.json(user !== null)
 })
 
-router.post('/user/signup', (req, res) => {
+router.post('/signup', (req, res) => {
   const user = new User(req.body)
   user
     .save()
@@ -25,7 +24,7 @@ router.post('/user/signup', (req, res) => {
     })
 })
 
-router.post('/user/login', (req, res) => {
+router.post('/login', (req, res) => {
   const username = req.body.username
   const password = req.body.password
   // Find this user name
@@ -61,7 +60,7 @@ router.post('/user/login', (req, res) => {
     })
 })
 
-router.get('/user/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   res.clearCookie('authToken')
   res.json({ message: 'Logged out' })
 })

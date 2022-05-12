@@ -3,7 +3,7 @@ const router = express.Router()
 const user = require('./user')
 
 router.get('/', (req, res) => {
-  res.send('api')
+  res.json('yo')
 })
 router.use('/user', user)
 
