@@ -5,10 +5,13 @@ const morgan = require('morgan')
 const compression = require('compression')
 const cookies = require('cookie-parser')
 const jwt = require('jsonwebtoken')
+const path = require('path')
 require('dotenv').config()
 require('./utils/dbConnection').config()
 
 const app = express()
+
+app.use(express.static(path.resolve(__dirname, '../build')))
 
 app.use(morgan('common'))
 app.use(helmet())
@@ -40,7 +43,7 @@ const routes = require('./routes')
 app.use('/api', routes)
 
 app.get('*', (req, res) => {
-  res.send('hello')
+  res.sendFile(path.resolve(__dirname, '../build', 'index.html'))
 })
 
 module.exports = app
