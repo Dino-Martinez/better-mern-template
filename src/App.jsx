@@ -1,10 +1,13 @@
 import './App.css'
 import Provider from './AuthProvider'
-import LoginForm from './LoginForm'
+import ProtectedExample from './ProtectedExample'
+import Protector from './Protector'
 function App () {
   return (
     <Provider>
-      <LoginForm />
+      <Protector>
+        <ProtectedExample />
+      </Protector>
     </Provider>
   )
 }
