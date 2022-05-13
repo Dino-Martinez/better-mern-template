@@ -26,6 +26,7 @@
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"cd api && node server.js\"",
     "build": "react-scripts build",
+    "prod": "react-scripts build && cd api && node server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "startApi": "cd api && node server.js"
