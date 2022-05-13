@@ -6,7 +6,7 @@ const compression = require('compression')
 const cookies = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 const path = require('path')
-require('dotenv').config()
+// require('dotenv').config() I USED PRE LOADING IN PACKAGE.JSON
 require('./utils/dbConnection').config()
 
 const app = express()

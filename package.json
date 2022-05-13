@@ -2,7 +2,7 @@
   "name": "mern-template",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8000",
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -24,12 +24,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"cd api && node server.js\"",
+    "start": "concurrently \"react-scripts start\" \"npm run startApi\"",
     "build": "react-scripts build",
-    "prod": "react-scripts build && cd api && node server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "startApi": "cd api && node server.js"
+    "startApi": "node -r dotenv/config api/server.js dotenv_config_path=api/.env"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +56,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.29.4"
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-standard": "^5.0.0"
   }
 }
