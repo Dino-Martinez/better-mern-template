@@ -5,7 +5,7 @@ export const AuthContext = createContext({})
 const Provider = ({ children }) => {
   const AuthProvider = AuthContext.Provider
   const [user, setUser] = useState(false)
-
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     checkAuth()
   }, [])
@@ -14,6 +14,7 @@ const Provider = ({ children }) => {
     const res = await fetch('/api/user')
     const json = await res.json()
     setUser(json)
+    setLoading(false)
   }
 
   const signup = async (username, password) => {
@@ -36,6 +37,7 @@ const Provider = ({ children }) => {
 
   const store = {
     user,
+    loading,
     signup,
     login,
     logout
